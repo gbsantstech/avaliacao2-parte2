@@ -17,9 +17,9 @@ public class RemoverDados {
 		Aluno aluno = new Aluno();
 		Scanner scan = new Scanner (System.in);
 		System.out.println("Informe o id do aluno(a) que deseja remover:  ");
-		Long id = scan.nextLong();
-		aluno.setId(id);
-		aluno = manager.find(Aluno.class, id);
+		String id = scan.next();
+	
+		aluno = manager.find(Aluno.class, Long.parseLong(id));
 		
 		manager.getTransaction().begin();
 		manager.remove(aluno);

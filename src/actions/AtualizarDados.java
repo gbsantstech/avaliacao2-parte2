@@ -14,19 +14,17 @@ public class AtualizarDados {
 	public static void main(String[] args) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("alunos");
 		EntityManager manager = factory.createEntityManager();
-		
-		
-		
+
 		Aluno aluno = new Aluno();
-		Scanner scan = new Scanner (System.in);
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Informe o id do aluno(a) para alterar os dados: ");
 		String id = scan.next();
 	
 		aluno = manager.find(Aluno.class, Long.parseLong(id));
 
-		
+
 		manager.getTransaction().begin();
-		
+
 		System.out.println("\nNome: ");
 		scan.nextLine();
 		aluno.setNome(scan.nextLine());
@@ -41,7 +39,7 @@ public class AtualizarDados {
 		System.out.println("\nEndereço completo: ");
 		aluno.setEndereco(scan.nextLine());
 		manager.getTransaction().commit();
-		
+
 		System.out.println("Atualizado com sucesso!");
 		manager.close();
 		factory.close();
